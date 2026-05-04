@@ -11,6 +11,7 @@ func isMorse(input string) bool {
 	for _, symb := range input {
 		if symb != '.' && symb != '-' && symb != ' ' {
 			return false
+
 		}
 	}
 	return true
