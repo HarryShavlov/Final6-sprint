@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/Yandex-Practicum/go1fl-sprint6-final/interna/service"
+	"github.com/Yandex-Practicum/go1fl-sprint6-final/internal/service"
 )
 
 func MainHandle(res http.ResponseWriter, req *http.Request) {
@@ -31,7 +31,7 @@ func UploadHandle(res http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	file, handle, err := req.FormFile("file")
+	file, handle, err := req.FormFile("myFile")
 
 	if err != nil {
 		http.Error(res, err.Error(), http.StatusInternalServerError)

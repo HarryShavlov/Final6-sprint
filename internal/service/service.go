@@ -3,15 +3,17 @@ package service
 import (
 	"errors"
 	"strings"
+	"unicode"
 
 	"github.com/Yandex-Practicum/go1fl-sprint6-final/pkg/morse"
 )
 
 func isMorse(input string) bool {
-	for _, symb := range input {
-		if symb != '.' && symb != '-' && symb != ' ' {
-			return false
 
+	for _, values := range input {
+
+		if unicode.IsLetter(values) || unicode.IsDigit(values) {
+			return false
 		}
 	}
 	return true
