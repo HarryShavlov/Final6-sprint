@@ -1,1 +1,44 @@
 package service
+
+import (
+	"errors"
+	"strings"
+	"unicode"
+
+	"github.com/Yandex-Practicum/go1fl-sprint6-final/pkg/morse"
+)
+
+func isMorse(input string) bool {
+
+	for _, values := range input {
+
+		if unicode.IsLetter(values) || unicode.IsDigit(values) {
+			return false
+		}
+	}
+	return true
+}
+func Convert(input string) (string, error) {
+	input = strings.TrimSpace(input)
+
+	if input == "" {
+		return "", errors.New("Пустая строка")
+	}
+
+	if isMorse(input) {
+		result := morse.ToText(input)
+		if strings.TrimSpace(result) == "" {
+			return "", errors.New("Ошибка перевода в текст")
+		}
+		return result, nil
+	}
+
+	result := morse.ToMorse(input)
+
+	if result == "" {
+		return "", errors.New("Ошибка перевода в Морзе")
+	}
+
+	return result, nil
+
+}
